@@ -1,1 +1,185 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MeubLuxe</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f8f6f2;color:#181818}.nav{height:72px;background:#111;color:white;display:flex;align-items:center;padding:0 6%;gap:28px}.logo{font:700 30px Georgia;margin-right:auto}.logo span{color:#d6a052}.nav a{color:white;text-decoration:none}.lang{position:relative}.lang button{background:#222;color:#fff;border:1px solid #555;border-radius:9px;padding:9px 13px;cursor:pointer}.menu{display:none;position:absolute;right:0;top:45px;background:white;min-width:170px;border-radius:10px;overflow:hidden;box-shadow:0 12px 30px #0003;z-index:10}.menu.open{display:block}.menu button{display:block;width:100%;border:0;background:white;color:#111;text-align:left;padding:12px 15px}.hero{min-height:360px;padding:75px 7%;color:#fff;background:linear-gradient(90deg,#000b,#0003),url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=2000&q=85') center/cover}.hero h1{font:700 50px Georgia;margin:0 0 15px}.hero span{color:#d6a052}.hero p{font-size:18px}.wrap{max-width:1150px;margin:auto;padding:50px 22px}.step{display:none}.step.active{display:block}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}.head h2{font:700 32px Georgia;margin:0}.muted{color:#777}.back{border:1px solid #ddd;background:white;padding:10px 15px;border-radius:8px;cursor:pointer}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:white;border:1px solid #e5e0d8;border-radius:15px;overflow:hidden;cursor:pointer;transition:.2s}.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px #0001}.photo{height:175px;background-size:cover;background-position:center}.body{padding:15px}.body h3{margin:0 0 7px}.body p{margin:0;color:#777;font-size:13px}.salon{background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80')}.bed{background-image:url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80')}.kitchen{background-image:url('https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=900&q=80')}.dress{background-image:url('https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80')}.table{background-image:url('https://images.unsplash.com/photo-1538688423619-a81d3f23454b?auto=format&fit=crop&w=900&q=80')}.office{background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80')}.door{background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80')}.other{background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80')}.subgrid{grid-template-columns:repeat(4,1fr)}.subcard{background:white;border:1px solid #e5e0d8;border-radius:14px;padding:20px;cursor:pointer}.subcard:hover{border-color:#d6a052;box-shadow:0 8px 22px #0001}.icon{font-size:32px;margin-bottom:12px}.subcard h3{margin:0 0 6px}.subcard p{margin:0;color:#777;font-size:13px}.rtl{text-align:right}.rtl .nav{direction:rtl}.rtl .logo{margin-right:0;margin-left:auto}.rtl .menu{right:auto;left:0}.rtl .menu button{text-align:right}
+@media(max-width:850px){.grid,.subgrid{grid-template-columns:repeat(2,1fr)}.nav a{display:none}}@media(max-width:520px){.grid,.subgrid{grid-template-columns:1fr}.hero h1{font-size:38px}}
 
+.product-layout{display:grid;grid-template-columns:245px 1fr;gap:24px}.filters{background:#fff;border:1px solid #e5e0d8;border-radius:15px;padding:18px;height:max-content;position:sticky;top:90px}.filters h3{margin:0 0 18px;font:700 20px Georgia}.filter{padding:14px 0;border-top:1px solid #eee}.filter:first-of-type{border-top:0}.filter label{display:block;font-size:13px;font-weight:700;margin-bottom:8px}.filter select,.filter input{width:100%;padding:9px;border:1px solid #ddd;border-radius:8px;background:#fff}.range{display:flex;gap:7px}.results-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.results-top h3{margin:0;font:700 25px Georgia}.sort{padding:9px;border:1px solid #ddd;border-radius:8px;background:#fff}.products{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.product{background:#fff;border:1px solid #e5e0d8;border-radius:14px;overflow:hidden}.product-img{height:190px;background-size:cover;background-position:center}.product-body{padding:14px}.product-body h3{margin:0 0 7px}.price{font-size:19px;font-weight:800;margin:7px 0}.meta{font-size:12px;color:#777;line-height:1.7}.product-actions{display:flex;gap:8px;margin-top:12px}.product-actions button{flex:1;padding:9px;border-radius:8px;cursor:pointer}.view{border:0;background:#111;color:#fff}.fav{border:1px solid #ddd;background:#fff}.pill{display:inline-block;background:#f1eadf;color:#8a5d20;border-radius:20px;padding:5px 9px;font-size:11px;margin-top:6px}
+@media(max-width:900px){.product-layout{grid-template-columns:1fr}.filters{position:static}.products{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.products{grid-template-columns:1fr}}
+</style></head><body>
+<nav class="nav"><div class="logo">Meub<span>Luxe</span></div><a href="#" onclick="home();return false" id="navHome">Accueil</a><a href="#categories" onclick="home();return false" id="navCat">Catégories</a><a href="#" onclick="showAdmin();return false">Admin</a><div class="lang"><button id="langBtn" onclick="toggle(event)">🌐 🇫🇷 Français ▾</button><div class="menu" id="menu"><button onclick="setLang('fr')">🇫🇷 Français</button><button onclick="setLang('en')">🇬🇧 English</button><button onclick="setLang('ar')">🇩🇿 العربية</button></div></div></nav>
+<section class="hero"><h1 id="hero">Trouvez le meuble idéal,<br><span>au meilleur endroit.</span></h1><p id="heroP">Comparez, choisissez et achetez en toute confiance.</p></section>
+
+<section class="wrap step active" id="s1"><div class="head"><div><h2 id="title1">Étape 1 — Que voulez-vous acheter ?</h2><p class="muted" id="sub1">Choisissez une catégorie pour commencer.</p></div></div><div class="grid" id="catGrid">
+<div class="card" onclick="openCat('salon')"><div class="photo salon"></div><div class="body"><h3 data-cat="salon">🛋️ Salon</h3><p data-desc="salon">Canapés, fauteuils, tables...</p></div></div>
+<div class="card" onclick="openCat('bedroom')"><div class="photo bed"></div><div class="body"><h3 data-cat="bedroom">🛏️ Chambre à coucher</h3><p data-desc="bedroom">Lits, armoires, commodes...</p></div></div>
+<div class="card" onclick="openCat('kitchen')"><div class="photo kitchen"></div><div class="body"><h3 data-cat="kitchen">🍳 Cuisine</h3><p data-desc="kitchen">Cuisines complètes et meubles...</p></div></div>
+<div class="card" onclick="openCat('dressing')"><div class="photo dress"></div><div class="body"><h3 data-cat="dressing">👗 Dressing</h3><p data-desc="dressing">Dressing, rangements...</p></div></div>
+<div class="card" onclick="openCat('tables')"><div class="photo table"></div><div class="body"><h3 data-cat="tables">🪑 Tables & chaises</h3><p data-desc="tables">Tables, chaises, ensembles...</p></div></div>
+<div class="card" onclick="openCat('office')"><div class="photo office"></div><div class="body"><h3 data-cat="office">🖥️ Bureau</h3><p data-desc="office">Bureaux, fauteuils, rangements...</p></div></div>
+<div class="card" onclick="openCat('doors')"><div class="photo door"></div><div class="body"><h3 data-cat="doors">🚪 Portes</h3><p data-desc="doors">Portes intérieures et extérieures...</p></div></div>
+<div class="card" onclick="openCat('other')"><div class="photo other"></div><div class="body"><h3>✨ Autre</h3><p>Autres produits d'ameublement...</p></div></div>
+</div></section>
+
+<section class="wrap step" id="s2"><div class="head"><div><h2 id="title2">Étape 2 — Choisissez ce que vous recherchez</h2><p class="muted" id="sub2">Tous les produits disponibles dans cette catégorie.</p></div><button class="back" onclick="home()">← Retour</button></div><div class="grid subgrid" id="subGrid"></div></section>
+
+
+<section class="wrap step" id="s3">
+<div class="head"><div><h2 id="productTitle">Étape 3 — Les produits disponibles</h2><p class="muted" id="productSub">Tous les produits disponibles chez nos vendeurs.</p></div><button class="back" onclick="backToSub()">← Retour</button></div>
+<div class="product-layout">
+<aside class="filters">
+<h3 id="filterTitle">🔎 Filtres</h3>
+<div class="filter"><label id="priceLabel">Prix</label><div class="range"><input id="minPrice" type="number" placeholder="Min"><input id="maxPrice" type="number" placeholder="Max"></div></div>
+<div class="filter"><label id="wilayaLabel">Wilaya</label><select><option>Toutes les wilayas</option><option>Alger</option><option>Blida</option><option>Tipaza</option><option>Boumerdès</option><option>Oran</option></select></div>
+<div class="filter"><label id="distanceLabel">Distance</label><select><option>Peu importe</option><option>Moins de 5 km</option><option>Moins de 10 km</option><option>Moins de 25 km</option></select></div>
+<div class="filter"><label id="ratingLabel">Évaluation</label><select><option>Toutes</option><option>4★ et plus</option><option>4.5★ et plus</option></select></div>
+<div class="filter"><label id="materialLabel">Matière</label><select><option>Toutes</option><option>Bois</option><option>Velours</option><option>Tissu</option><option>MDF</option><option>Métal</option></select></div>
+<div class="filter"><label id="deliveryLabel">Services</label><select><option>Tous</option><option>Livraison</option><option>Livraison + montage</option><option>Garantie</option></select></div>
+</aside>
+<section>
+<div class="results-top"><h3 id="resultsCount">Produits disponibles</h3><select class="sort"><option>Plus pertinents</option><option>Prix croissant</option><option>Prix décroissant</option><option>Mieux notés</option></select></div>
+<div class="products" id="products"></div>
+</section>
+</div>
+</section>
+
+<section class="wrap step" id="admin">
+<div class="head"><div><h2>⚙️ MeubLuxe Admin</h2><p class="muted">لوحة التحكم الخاصة بيك — أنت وحدك تسير المنتجات والبائعين.</p></div><button class="back" onclick="home()">← الموقع</button></div>
+<div class="grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px">
+<div class="subcard"><div class="icon">📦</div><h3>124</h3><p>Produits</p></div>
+<div class="subcard"><div class="icon">🏪</div><h3>38</h3><p>Vendeurs</p></div>
+<div class="subcard"><div class="icon">👥</div><h3>1,240</h3><p>Visiteurs</p></div>
+<div class="subcard"><div class="icon">🛒</div><h3>86</h3><p>Demandes</p></div>
+</div>
+<div class="product-layout">
+<aside class="filters">
+<h3>⚙️ Gestion</h3>
+<div class="filter"><button class="view" style="width:100%;padding:12px;border-radius:8px;border:0;cursor:pointer" onclick="adminTab('products')">📦 Produits</button></div>
+<div class="filter"><button style="width:100%;padding:12px;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer" onclick="adminTab('sellers')">🏪 Vendeurs</button></div>
+<div class="filter"><button style="width:100%;padding:12px;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer" onclick="adminTab('requests')">📩 Demandes clients</button></div>
+</aside>
+<section>
+<div id="adminContent" style="background:#fff;border:1px solid #e5e0d8;border-radius:15px;padding:22px">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px"><h2 style="margin:0;font-family:Georgia">Produits</h2><button class="primary" onclick="alert('Formulaire Ajouter produit — المرحلة القادمة')">+ Ajouter produit</button></div>
+<div style="overflow:auto"><table style="width:100%;border-collapse:collapse"><tr style="text-align:left;border-bottom:1px solid #eee"><th style="padding:12px">Produit</th><th>Vendeur</th><th>Prix</th><th>Statut</th><th>Action</th></tr>
+<tr><td style="padding:12px">Lit moderne</td><td>Meubles El Bahia</td><td>85 000 DA</td><td>🟢 Publié</td><td><button onclick="alert('Modifier produit')">Modifier</button></td></tr>
+<tr><td style="padding:12px">Canapé premium</td><td>Maison Confort</td><td>135 000 DA</td><td>🟢 Publié</td><td><button onclick="alert('Modifier produit')">Modifier</button></td></tr>
+<tr><td style="padding:12px">Cuisine moderne</td><td>Atelier Design</td><td>Sur devis</td><td>🟡 En attente</td><td><button onclick="alert('Valider produit')">Valider</button></td></tr>
+</table></div></div>
+</section>
+</div>
+</section>
+<script>
+const data={
+salon:{
+fr:[['🛋️','Salon complet','Ensemble salon'],['🛋️','Canapé','Canapés droits'],['🛋️','Canapé d’angle','Canapés d’angle'],['🪑','Fauteuil','Fauteuils'],['🪵','Table basse','Tables de salon'],['📺','Meuble TV','Meubles TV'],['📚','Bibliothèque','Rangements'],['🧸','Pouf','Poufs et assises']],
+en:[['🛋️','Complete living room','Living room set'],['🛋️','Sofa','Straight sofas'],['🛋️','Corner sofa','Corner sofas'],['🪑','Armchair','Armchairs'],['🪵','Coffee table','Living room tables'],['📺','TV unit','TV furniture'],['📚','Bookcase','Storage'],['🧸','Pouf','Poufs and seating']],
+ar:[['🛋️','صالون كامل','طقم صالون'],['🛋️','كنبة','كنبات مستقيمة'],['🛋️','كنبة زاوية','كنبات زاوية'],['🪑','فوتاي','فوتايات'],['🪵','طاولة وسط','طاولات الصالون'],['📺','م meuble تلفاز','خزائن التلفاز'],['📚','مكتبة','خزائن ورُفوف'],['🧸','بوف','بوفات ومقاعد']]
+},
+bedroom:{
+fr:[['🛏️','Chambre complète','Ensemble chambre'],['🛌','Lit','Lits adultes'],['🗄️','Table de nuit','Chevets'],['🚪','Armoire','Armoires'],['👗','Dressing','Dressings'],['🪑','Commode','Commodes'],['💄','Coiffeuse','Coiffeuses'],['🪞','Miroir','Miroirs'],['🛏️','Tête de lit','Têtes de lit'],['😴','Matelas','Matelas'],['🛌','Sommier','Sommiers'],['🪑','Banc de lit','Bancs']],
+en:[['🛏️','Complete bedroom','Bedroom set'],['🛌','Bed','Adult beds'],['🗄️','Bedside table','Nightstands'],['🚪','Wardrobe','Wardrobes'],['👗','Dressing room','Walk-in wardrobes'],['🪑','Chest of drawers','Dressers'],['💄','Dressing table','Vanity tables'],['🪞','Mirror','Mirrors'],['🛏️','Headboard','Headboards'],['😴','Mattress','Mattresses'],['🛌','Bed base','Bed bases'],['🪑','Bed bench','Benches']],
+ar:[['🛏️','غرفة نوم كاملة','طقم غرفة نوم'],['🛌','سرير','أسِرّة'],['🗄️','طاولة جانبية','طاولات سرير'],['🚪','خزانة','خزائن'],['👗','دريسينغ','دريسينغات'],['🪑','كومودينو','كومودينات'],['💄','طاولة زينة','طاولات زينة'],['🪞','مرآة','مرايا'],['🛏️','رأس السرير','رؤوس الأسرّة'],['😴','مرتبة','مراتب'],['🛌','سوميي','قواعد الأسرّة'],['🪑','بانك السرير','مقاعد السرير']]
+},
+kitchen:{
+fr:[['🍳','Cuisine complète','Cuisine équipée'],['🗄️','Meubles bas','Meubles de cuisine'],['🗄️','Meubles hauts','Meubles hauts'],['🧱','Plan de travail','Plans de travail'],['🚰','Évier','Éviers'],['🔥','Four & plaque','Électroménager'],['🪑','Table de cuisine','Tables'],['🪑','Chaises','Chaises de cuisine']],
+en:[['🍳','Complete kitchen','Fitted kitchen'],['🗄️','Base cabinets','Kitchen cabinets'],['🗄️','Wall cabinets','Upper cabinets'],['🧱','Worktop','Countertops'],['🚰','Sink','Sinks'],['🔥','Oven & hob','Appliances'],['🪑','Kitchen table','Tables'],['🪑','Chairs','Kitchen chairs']],
+ar:[['🍳','مطبخ كامل','مطبخ مجهز'],['🗄️','خزائن سفلية','خزائن المطبخ'],['🗄️','خزائن علوية','خزائن علوية'],['🧱','سطح العمل','أسطح العمل'],['🚰','حوض','أحواض'],['🔥','فرن و بلاطة','أجهزة كهرومنزلية'],['🪑','طاولة مطبخ','طاولات'],['🪑','كراسي','كراسي المطبخ']]
+},
+dressing:{
+fr:[['👗','Dressing complet','Dressing sur mesure'],['🚪','Portes de dressing','Portes'],['🗄️','Rangements','Étagères'],['🧺','Tiroirs','Tiroirs'],['🪞','Miroir','Miroirs']],
+en:[['👗','Complete dressing','Custom dressing'],['🚪','Dressing doors','Doors'],['🗄️','Storage','Shelves'],['🧺','Drawers','Drawers'],['🪞','Mirror','Mirrors']],
+ar:[['👗','دريسينغ كامل','دريسينغ حسب الطلب'],['🚪','أبواب الدريسينغ','أبواب'],['🗄️','خزائن وترتيب','رفوف'],['🧺','أدراج','أدراج'],['🪞','مرآة','مرايا']]
+},
+tables:{
+fr:[['🪵','Table à manger','Tables'],['🪑','Chaises','Chaises'],['🪑','Ensemble table + chaises','Ensembles'],['☕','Table basse','Tables basses'],['🪑','Tabouret','Tabourets']],
+en:[['🪵','Dining table','Tables'],['🪑','Chairs','Chairs'],['🪑','Table + chairs set','Sets'],['☕','Coffee table','Coffee tables'],['🪑','Stool','Stools']],
+ar:[['🪵','طاولة أكل','طاولات'],['🪑','كراسي','كراسي'],['🪑','طقم طاولة وكراسي','أطقم'],['☕','طاولة وسط','طاولات وسط'],['🪑','كرسي مرتفع','كراسي مرتفعة']]
+},
+office:{
+fr:[['🖥️','Bureau','Bureaux'],['🪑','Fauteuil de bureau','Fauteuils'],['🗄️','Armoire de bureau','Rangements'],['📚','Bibliothèque','Bibliothèques'],['🪑','Chaise','Chaises']],
+en:[['🖥️','Desk','Desks'],['🪑','Office chair','Chairs'],['🗄️','Office cabinet','Storage'],['📚','Bookcase','Bookcases'],['🪑','Chair','Chairs']],
+ar:[['🖥️','مكتب','مكاتب'],['🪑','كرسي مكتب','كراسي'],['🗄️','خزانة مكتب','خزائن'],['📚','مكتبة','مكتبات'],['🪑','كرسي','كراسي']]
+},
+doors:{
+fr:[['🚪','Porte intérieure','Portes'],['🚪','Porte extérieure','Portes'],['🚪','Porte coulissante','Portes'],['🚪','Porte vitrée','Portes'],['🔐','Porte blindée','Sécurité']],
+en:[['🚪','Interior door','Doors'],['🚪','Exterior door','Doors'],['🚪','Sliding door','Doors'],['🚪','Glass door','Doors'],['🔐','Security door','Security']],
+ar:[['🚪','باب داخلي','أبواب'],['🚪','باب خارجي','أبواب'],['🚪','باب جرّار','أبواب'],['🚪','باب زجاجي','أبواب'],['🔐','باب مصفّح','أمان']]
+},
+other:{
+fr:[['🛏️','Lit bébé','Bébé'],['🪑','Meuble d’entrée','Entrée'],['🪞','Miroir','Décoration'],['🧺','Rangement','Rangements'],['🪴','Décoration','Maison']],
+en:[['🛏️','Baby bed','Baby'],['🪑','Entryway furniture','Entryway'],['🪞','Mirror','Decoration'],['🧺','Storage','Storage'],['🪴','Decoration','Home']],
+ar:[['🛏️','سرير أطفال','أطفال'],['🪑','أثاث المدخل','المدخل'],['🪞','مرآة','ديكور'],['🧺','خزائن وترتيب','ترتيب'],['🪴','ديكور','المنزل']]
+}};
+const labels={
+fr:{name:'Français',flag:'🇫🇷',navHome:'Accueil',navCat:'Catégories',hero:'Trouvez le meuble idéal,<br><span>au meilleur endroit.</span>',p:'Comparez, choisissez et achetez en toute confiance.',t1:'Étape 1 — Que voulez-vous acheter ?',s1:'Choisissez une catégorie pour commencer.',t2:'Étape 2 — Choisissez ce que vous recherchez',s2:'Tous les produits disponibles dans cette catégorie.',back:'← Retour',cats:{salon:['Salon','Canapés, fauteuils, tables...'],bedroom:['Chambre à coucher','Lits, armoires, commodes...'],kitchen:['Cuisine','Cuisines complètes et meubles...'],dressing:['Dressing','Dressing, rangements...'],tables:['Tables & chaises','Tables, chaises, ensembles...'],office:['Bureau','Bureaux, fauteuils, rangements...'],doors:['Portes','Portes intérieures et extérieures...'],other:['Autre','Autres produits d’ameublement...']}},
+en:{name:'English',flag:'🇬🇧',navHome:'Home',navCat:'Categories',hero:'Find the perfect furniture,<br><span>from the right place.</span>',p:'Compare, choose and buy with confidence.',t1:'Step 1 — What do you want to buy?',s1:'Choose a category to start.',t2:'Step 2 — Choose what you are looking for',s2:'All products available in this category.',back:'← Back',cats:{salon:['Living room','Sofas, armchairs, tables...'],bedroom:['Bedroom','Beds, wardrobes, dressers...'],kitchen:['Kitchen','Complete kitchens and furniture...'],dressing:['Dressing room','Wardrobes, storage...'],tables:['Tables & chairs','Tables, chairs, sets...'],office:['Office','Desks, chairs, storage...'],doors:['Doors','Interior and exterior doors...'],other:['Other','Other furniture products...']}},
+ar:{name:'العربية',flag:'🇩🇿',navHome:'الرئيسية',navCat:'الفئات',hero:'لقاو الأثاث المناسب،<br><span>في المكان المناسب.</span>',p:'قارن، اختار واشري بكل ثقة.',t1:'المرحلة 1 — واش حاب تشري؟',s1:'اختار الفئة باش تبدا.',t2:'المرحلة 2 — اختار واش راك تقلب',s2:'كامل المنتجات الموجودة في هذي الفئة.',back:'← رجوع',cats:{salon:['الصالون','كنبات، فوتايات، طاولات...'],bedroom:['غرفة النوم','أسِرّة، خزائن، كومودينات...'],kitchen:['المطبخ','مطابخ كاملة وخزائن...'],dressing:['الدريسينغ','دريسينغات وخزائن...'],tables:['طاولات وكراسي','طاولات، كراسي وأطقم...'],office:['المكتب','مكاتب، كراسي وخزائن...'],doors:['الأبواب','أبواب داخلية وخارجية...'],other:['أخرى','منتجات أثاث أخرى...']}}
+};
+let lang='fr';
+function toggle(e){e.stopPropagation();document.getElementById('menu').classList.toggle('open')}document.addEventListener('click',e=>{if(!e.target.closest('.lang'))document.getElementById('menu').classList.remove('open')});
+
+function showAdmin(){document.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));document.getElementById('admin').classList.add('active');scrollTo({top:0,behavior:'smooth'})}
+function adminTab(tab){let c=document.getElementById('adminContent');if(tab==='sellers')c.innerHTML='<h2 style="font-family:Georgia">🏪 Vendeurs</h2><p class="muted">Gestion des magasins, coordonnées, wilaya, services et validation.</p><button class="primary" onclick="alert(\'Ajouter vendeur\')">+ Ajouter vendeur</button>';else if(tab==='requests')c.innerHTML='<h2 style="font-family:Georgia">📩 Demandes clients</h2><p class="muted">Demandes reçues depuis le site.</p><div class="subcard"><b>Client #1042</b><p>Recherche : Lit 2 places • Alger • Budget 100 000 DA</p></div>';else c.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px"><h2 style="margin:0;font-family:Georgia">Produits</h2><button class="primary" onclick="alert(\'Formulaire Ajouter produit — المرحلة القادمة\')">+ Ajouter produit</button></div><p class="muted">Ajout, modification, prix, photos, catégorie, vendeur et publication.</p>'}
+function setLang(l){
+lang=l;let d=labels[l];document.documentElement.lang=l;document.body.classList.toggle('rtl',l==='ar');
+document.getElementById('langBtn').innerHTML='🌐 '+d.flag+' '+d.name+' ▾';
+document.getElementById('navHome').textContent=d.navHome;document.getElementById('navCat').textContent=d.navCat;
+document.getElementById('hero').innerHTML=d.hero;document.getElementById('heroP').textContent=d.p;
+document.getElementById('title1').textContent=d.t1;document.getElementById('sub1').textContent=d.s1;
+document.getElementById('title2').textContent=d.t2;document.getElementById('sub2').textContent=d.s2;
+document.querySelector('.back').textContent=d.back;
+document.querySelectorAll('[data-cat]').forEach(el=>{let x=d.cats[el.dataset.cat];el.innerHTML=el.innerHTML.split(' ').slice(0,1).join(' ')+' '+x[0]});
+document.querySelectorAll('[data-desc]').forEach(el=>el.textContent=d.cats[el.dataset.desc][1]);
+document.getElementById('menu').classList.remove('open');
+if(document.getElementById('s2').classList.contains('active') && window.currentCat) openCat(window.currentCat,false);if(document.getElementById('s3').classList.contains('active') && window.currentProduct) openProducts(window.currentCat,window.currentProduct);
+}
+function openCat(cat,scroll=true){
+window.currentCat=cat;let grid=document.getElementById('subGrid');grid.innerHTML='';
+(data[cat][lang]||data[cat].fr).forEach(x=>{let c=document.createElement('div');c.className='subcard';c.innerHTML='<div class="icon">'+x[0]+'</div><h3>'+x[1]+'</h3><p>'+x[2]+'</p>';c.onclick=()=>openProducts(cat,x[1]);grid.appendChild(c)});
+document.getElementById('s1').classList.remove('active');document.getElementById('s2').classList.add('active');if(scroll)scrollTo({top:0,behavior:'smooth'})
+}
+
+const products={
+'Lit':[
+['https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80','Lit moderne 2 places','85 000 DA','Meubles El Bahia','4.8','Alger • 3 km','Bois • Livraison • Montage'],
+['https://images.unsplash.com/photo-1617325710236-4a36d5671b2b?auto=format&fit=crop&w=900&q=80','Lit coffre premium','120 000 DA','Maison Confort','4.6','Blida • 7 km','Bois/MDF • Livraison'],
+['https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80','Lit King Size','150 000 DA','Meuble Design','4.9','Alger • 9 km','Bois • Livraison • Garantie'],
+['https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80','Lit sur mesure','110 000 DA','Atelier Moderne','4.7','Tipaza • 14 km','Sur mesure • Montage']
+],
+'Salon complet':[
+['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80','Salon moderne complet','185 000 DA','Meubles El Bahia','4.8','Alger • 3 km','Livraison • Montage'],
+['https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80','Salon luxe','290 000 DA','Maison Confort','4.6','Blida • 7 km','Livraison • Garantie'],
+['https://images.unsplash.com/photo-1550226891-ef816aed4a98?auto=format&fit=crop&w=900&q=80','Salon familial','220 000 DA','Meuble Design','4.9','Alger • 9 km','Livraison • Montage']
+],
+'Canapé':[
+['https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80','Canapé 3 places','75 000 DA','Meubles El Bahia','4.8','Alger • 3 km','Livraison'],
+['https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=900&q=80','Canapé confort','95 000 DA','Maison Confort','4.6','Blida • 7 km','Livraison • Montage'],
+['https://images.unsplash.com/photo-1550226891-ef816aed4a98?auto=format&fit=crop&w=900&q=80','Canapé premium','135 000 DA','Meuble Design','4.9','Alger • 9 km','Livraison • Garantie']
+]
+};
+function openProducts(cat,name){
+window.currentProduct=name;
+let arr=products[name]||[];
+if(!arr.length){
+arr=[
+['https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80',name+' — modèle 1','Sur devis','Atelier MeubLuxe','4.8','Alger • 5 km','Livraison • Montage'],
+['https://images.unsplash.com/photo-1538688423619-a81d3f23454b?auto=format&fit=crop&w=900&q=80',name+' — modèle 2','Sur devis','Maison Confort','4.6','Blida • 10 km','Livraison'],
+['https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80',name+' — modèle 3','Sur devis','Meuble Design','4.9','Tipaza • 12 km','Livraison • Garantie']
+];
+}
+renderProducts(arr,name);document.getElementById('s2').classList.remove('active');document.getElementById('s3').classList.add('active');scrollTo({top:0,behavior:'smooth'})
+}
+function renderProducts(arr,name){
+let d=labels[lang];document.getElementById('productTitle').textContent=(lang==='ar'?'المرحلة 3 — المنتجات المتوفرة':lang==='en'?'Step 3 — Available products':'Étape 3 — Produits disponibles');
+document.getElementById('productSub').textContent=(lang==='ar'?'كامل المنتجات المتوفرة عند الباعة':lang==='en'?'All products available from our sellers.':'Tous les produits disponibles chez nos vendeurs.');
+document.getElementById('filterTitle').textContent='🔎 '+(lang==='ar'?'الفلاتر':lang==='en'?'Filters':'Filtres');
+document.getElementById('priceLabel').textContent=lang==='ar'?'السعر':lang==='en'?'Price':'Prix';document.getElementById('wilayaLabel').textContent=lang==='ar'?'الولاية':lang==='en'?'Wilaya':'Wilaya';document.getElementById('distanceLabel').textContent=lang==='ar'?'المسافة':lang==='en'?'Distance':'Distance';document.getElementById('ratingLabel').textContent=lang==='ar'?'التقييم':lang==='en'?'Rating':'Évaluation';document.getElementById('materialLabel').textContent=lang==='ar'?'المادة':lang==='en'?'Material':'Matière';document.getElementById('deliveryLabel').textContent=lang==='ar'?'الخدمات':lang==='en'?'Services':'Services';
+document.getElementById('resultsCount').textContent=(lang==='ar'?arr.length+' منتجات متوفرة':lang==='en'?arr.length+' products available':arr.length+' produits disponibles');
+let box=document.getElementById('products');box.innerHTML='';
+arr.forEach((x,i)=>{let c=document.createElement('article');c.className='product';c.innerHTML='<div class="product-img" style="background-image:url('+x[0]+')"></div><div class="product-body"><span class="pill">✓ Vérifié</span><h3>'+x[1]+'</h3><div class="price">'+x[2]+'</div><div class="meta">🏪 '+x[3]+'<br>⭐ '+x[4]+' • 📍 '+x[5]+'<br>🚚 '+x[6]+'</div><div class="product-actions"><button class="view" onclick="alert(\''+(lang==='ar'?'فتح المنتج':'Voir le produit')+'\')">'+(lang==='ar'?'شوف المنتج':lang==='en'?'View product':'Voir le produit')+'</button><button class="fav">♡</button></div></div>';box.appendChild(c)})
+}
+function backToSub(){document.getElementById('s3').classList.remove('active');document.getElementById('s2').classList.add('active');scrollTo({top:0,behavior:'smooth'})}
+function home(){document.getElementById('s2').classList.remove('active');document.getElementById('s3').classList.remove('active');document.getElementById('s1').classList.add('active');scrollTo({top:0,behavior:'smooth'})}
+setLang('fr');
+</script></body></html>
