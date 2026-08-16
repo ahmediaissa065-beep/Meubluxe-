@@ -228,20 +228,6 @@ async function logout(){
   location.reload();
 }
 
-// 🔐 Reset password
-client.auth.onAuthStateChange((event, session) => {
-
-  if(event === "PASSWORD_RECOVERY"){
-
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("dashboard").style.display = "none";
-    document.getElementById("resetPage").style.display = "flex";
-
-  }
-
-});
-
-}
 </script>
 
 </body>
