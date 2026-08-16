@@ -84,6 +84,25 @@ supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
+  client.auth.onAuthStateChange((event, session) => {
+
+  if (event === "PASSWORD_RECOVERY") {
+
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("resetPage").style.display = "flex";
+
+  }
+
+});
+
+if (window.location.hash.includes("access_token")) {
+
+  document.getElementById("loginPage").style.display = "none";
+  document.getElementById("dashboard").style.display = "none";
+  document.getElementById("resetPage").style.display = "flex";
+
+}
 async function updatePassword(){
 
   const password =
