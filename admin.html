@@ -207,11 +207,18 @@ async function logout(){
   await client.auth.signOut();
 
   location.reload();
-}
-if(window.location.hash.includes("type=recovery")){
-  document.getElementById("loginPage").style.display = "none";
-  document.getElementById("dashboard").style.display = "none";
-  document.getElementById("resetPage").style.display = "flex";
+client.auth.onAuthStateChange((event) => {
+
+  if(event === "PASSWORD_RECOVERY"){
+
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("resetPage").style.display = "flex";
+
+  }
+
+});
+
 }
 </script>
 
