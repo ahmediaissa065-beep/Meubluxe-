@@ -207,7 +207,10 @@ async function logout(){
   await client.auth.signOut();
 
   location.reload();
-client.auth.onAuthStateChange((event) => {
+}
+
+// 🔐 Reset password
+client.auth.onAuthStateChange((event, session) => {
 
   if(event === "PASSWORD_RECOVERY"){
 
