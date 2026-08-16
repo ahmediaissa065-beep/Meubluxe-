@@ -52,7 +52,15 @@ button{border:0;border-radius:9px;padding:13px 18px;cursor:pointer;font-weight:b
     <input id="password" type="password" placeholder="Mot de passe">
 
     <button class="loginBtn" onclick="login()">Se connecter</button>
-
+<div style="text-align:center;margin-top:12px">
+  <button
+    type="button"
+    onclick="forgotPassword()"
+    style="background:none;color:#c89143;padding:5px">
+    Mot de passe oublié ?
+  </button>
+</div>
+    
     <div class="error" id="error"></div>
   </div>
 </div>
@@ -141,6 +149,48 @@ async function updatePassword(){
   alert("Mot de passe modifié avec succès.");
 
   window.location.href = window.location.pathname;
+}
+  async function forgotPassword(){
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const error =
+    document.getElementById("error");
+
+  error.textContent = "";
+
+  if(!email){
+
+    error.textContent =
+      "Entre ton email d'abord.";
+
+    return;
+
+  }
+
+  const { error: resetError } =
+    await client.auth.resetPasswordForEmail(
+      email,
+      {
+        redirectTo:
+          window.location.origin +
+          window.location.pathname
+      }
+    );
+
+  if(resetError){
+
+    error.textContent =
+      resetError.message;
+
+    return;
+
+  }
+
+  error.style.color = "green";
+  error.textContent =
+    "Un email de réinitialisation a été envoyé.";
 }
 async function login(){
 
