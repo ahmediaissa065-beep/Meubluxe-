@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,7 +10,7 @@
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#f5f3ef;color:#181818}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f3ef;color:#181818}
 .login{min-height:100vh;display:flex;align-items:center;justify-content:center}
 .box{background:#fff;width:400px;max-width:90%;padding:30px;border-radius:18px;box-shadow:0 10px 35px #0002}
 .logo{font:700 30px Georgia;margin-bottom:25px}
@@ -28,6 +29,7 @@ button{border:0;border-radius:9px;padding:13px 18px;cursor:pointer;font-weight:b
 </head>
 
 <body>
+
 <div class="login" id="resetPage" style="display:none">
   <div class="box">
     <div class="logo">Meub<span>Luxe</span></div>
@@ -43,6 +45,7 @@ button{border:0;border-radius:9px;padding:13px 18px;cursor:pointer;font-weight:b
     <div class="error" id="resetError"></div>
   </div>
 </div>
+
 <div class="login" id="loginPage">
   <div class="box">
     <div class="logo">Meub<span>Luxe</span></div>
@@ -52,15 +55,13 @@ button{border:0;border-radius:9px;padding:13px 18px;cursor:pointer;font-weight:b
     <input id="password" type="password" placeholder="Mot de passe">
 
     <button class="loginBtn" onclick="login()">Se connecter</button>
-<div style="text-align:center;margin-top:12px">
-  <button
-    type="button"
-    onclick="forgotPassword()"
-    style="background:none;color:#c89143;padding:5px">
-    Mot de passe oublié ?
-  </button>
-</div>
-    
+
+    <div style="text-align:center;margin-top:12px">
+      <button type="button" onclick="forgotPassword()" style="background:none;color:#c89143;padding:5px">
+        Mot de passe oublié ?
+      </button>
+    </div>
+
     <div class="error" id="error"></div>
   </div>
 </div>
@@ -87,128 +88,121 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_OmKcyY6XK11jx4FgJI1pHw_uENdn4nX";
 
-const client =
-supabase.createClient(
+const client = supabase.createClient(
   SUPABASE_URL,
-  SUPABASE_KEY
-);
-  client.auth.onAuthStateChange((event, session) => {
-
-  if (event === "PASSWORD_RECOVERY") {
-
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("dashboard").style.display = "none";
-    document.getElementById("resetPage").style.display = "flex";
-
+  SUPABASE_KEY,
+  {
+    auth:{
+      persistSession:true,
+      autoRefreshToken:true,
+      detectSessionInUrl:true
+    }
   }
+);
 
+function showResetPage(){
+  document.getElementById("loginPage").style.display="none";
+  document.getElementById("dashboard").style.display="none";
+  document.getElementById("resetPage").style.display="flex";
+}
+
+function showLogin(){
+  document.getElementById("resetPage").style.display="none";
+  document.getElementById("dashboard").style.display="none";
+  document.getElementById("loginPage").style.display="flex";
+}
+
+client.auth.onAuthStateChange((event,session)=>{
+  if(event==="PASSWORD_RECOVERY"){
+    showResetPage();
+  }
 });
 
-if (window.location.hash.includes("access_token")) {
-
-  document.getElementById("loginPage").style.display = "none";
-  document.getElementById("dashboard").style.display = "none";
-  document.getElementById("resetPage").style.display = "flex";
-
+if(window.location.hash.includes("access_token=")){
+  showResetPage();
 }
+
 async function updatePassword(){
 
-  const password =
-    document.getElementById("newPassword").value;
+  const password=document.getElementById("newPassword").value;
+  const confirm=document.getElementById("confirmPassword").value;
+  const error=document.getElementById("resetError");
 
-  const confirm =
-    document.getElementById("confirmPassword").value;
+  error.textContent="";
 
-  const error =
-    document.getElementById("resetError");
-
-  error.textContent = "";
-
-  if(password.length < 6){
-    error.textContent =
-      "Le mot de passe doit contenir au moins 6 caractères.";
+  if(password.length<6){
+    error.textContent="Le mot de passe doit contenir au moins 6 caractères.";
     return;
   }
 
-  if(password !== confirm){
-    error.textContent =
-      "Les mots de passe ne correspondent pas.";
+  if(password!==confirm){
+    error.textContent="Les mots de passe ne correspondent pas.";
     return;
   }
 
-  const { error: updateError } =
-    await client.auth.updateUser({
-      password: password
-    });
+  const {error:updateError}=await client.auth.updateUser({
+    password:password
+  });
 
   if(updateError){
-    error.textContent = updateError.message;
+    error.textContent=updateError.message;
     return;
   }
 
   alert("Mot de passe modifié avec succès.");
 
-  window.location.href = window.location.pathname;
+  await client.auth.signOut();
+
+  showLogin();
 }
-  async function forgotPassword(){
 
-  const email =
-    document.getElementById("email").value.trim();
+async function forgotPassword(){
 
-  const error =
-    document.getElementById("error");
+  const email=document.getElementById("email").value.trim();
+  const error=document.getElementById("error");
 
-  error.textContent = "";
+  error.style.color="#c00";
+  error.textContent="";
 
   if(!email){
-
-    error.textContent =
-      "Entre ton email d'abord.";
-
+    error.textContent="Entre ton email d'abord.";
     return;
-
   }
 
-  const { error: resetError } =
+  const redirectUrl =
+    window.location.origin +
+    window.location.pathname;
+
+  const {error:resetError} =
     await client.auth.resetPasswordForEmail(
       email,
       {
-        redirectTo:
-          window.location.origin +
-          window.location.pathname
+        redirectTo:redirectUrl
       }
     );
 
   if(resetError){
-
-    error.textContent =
-      resetError.message;
-
+    error.textContent=resetError.message;
     return;
-
   }
 
-  error.style.color = "green";
-  error.textContent =
-    "Un email de réinitialisation a été envoyé.";
+  error.style.color="green";
+  error.textContent="Un email de réinitialisation a été envoyé.";
 }
+
 async function login(){
 
-  const email =
-  document.getElementById("email").value;
+  const email=document.getElementById("email").value.trim();
+  const password=document.getElementById("password").value;
 
-  const password =
-  document.getElementById("password").value;
-
-  const {error} =
-  await client.auth.signInWithPassword({
-    email,
-    password
+  const {error}=await client.auth.signInWithPassword({
+    email:email,
+    password:password
   });
 
   if(error){
-    document.getElementById("error").textContent =
-    "Email ou mot de passe incorrect.";
+    document.getElementById("error").textContent=
+      "Email ou mot de passe incorrect.";
     return;
   }
 
@@ -218,6 +212,7 @@ async function login(){
 function showAdmin(){
 
   document.getElementById("loginPage").style.display="none";
+  document.getElementById("resetPage").style.display="none";
   document.getElementById("dashboard").style.display="block";
 
   loadVendors();
@@ -225,35 +220,34 @@ function showAdmin(){
 
 async function loadVendors(){
 
-  const {data,error} =
-  await client
-  .from("vendors")
-  .select("*")
-  .order("created_at",{ascending:false});
+  const {data,error}=await client
+    .from("vendors")
+    .select("*")
+    .order("created_at",{ascending:false});
 
-  const box =
-  document.getElementById("vendors");
+  const box=document.getElementById("vendors");
 
   if(error){
     box.textContent=error.message;
     return;
   }
 
-  if(!data.length){
+  if(!data || !data.length){
     box.innerHTML="<p>Aucun vendeur.</p>";
     return;
   }
 
   box.innerHTML=data.map(v=>`
     <div class="vendor">
-      <h3>${v.name}</h3>
+      <h3>${v.name || ""}</h3>
       <p>${v.category || ""}</p>
       <p>📍 ${v.city || ""}</p>
       <p>📞 ${v.phone || ""}</p>
 
-      <button class="delete"
-      onclick="deleteVendor('${v.id}')">
-      Supprimer
+      <button
+        class="delete"
+        onclick="deleteVendor('${v.id}')">
+        Supprimer
       </button>
     </div>
   `).join("");
@@ -261,12 +255,19 @@ async function loadVendors(){
 
 async function deleteVendor(id){
 
-  if(!confirm("Supprimer ce vendeur ?")) return;
+  if(!confirm("Supprimer ce vendeur ?")){
+    return;
+  }
 
-  await client
-  .from("vendors")
-  .delete()
-  .eq("id",id);
+  const {error}=await client
+    .from("vendors")
+    .delete()
+    .eq("id",id);
+
+  if(error){
+    alert(error.message);
+    return;
+  }
 
   loadVendors();
 }
@@ -282,3 +283,4 @@ async function logout(){
 
 </body>
 </html>
+```
